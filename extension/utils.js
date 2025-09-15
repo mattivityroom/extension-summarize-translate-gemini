@@ -137,11 +137,10 @@ export const getThinkingBudget = (languageModel, userModelId) => {
 
 export const generateContent = async (apiKey, modelId, apiContents, apiConfig) => {
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent`, {
+    const response = await fetch(`https://aiplatform.googleapis.com/v1/publishers/google/models/${modelId}:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": apiKey
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         contents: apiContents,
@@ -168,11 +167,10 @@ export const streamGenerateContent = async (apiKey, modelId, apiContents, apiCon
   try {
     await chrome.storage.session.remove("streamContent");
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelId}:streamGenerateContent`, {
+    const response = await fetch(`https://aiplatform.googleapis.com/v1/publishers/google/models/${modelId}:streamGenerateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": apiKey
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         contents: apiContents,

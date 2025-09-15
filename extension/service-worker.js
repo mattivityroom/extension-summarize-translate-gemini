@@ -130,10 +130,10 @@ const getCharacterLimit = async (apiKey, modelId, actionType) => {
     };
 
     try {
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelId}`, {
+      const response = await fetch(`https://aiplatform.googleapis.com/v1/publishers/google/models/${modelId}?key=${apiKey}`, {
         method: "GET",
         headers: {
-          "x-goog-api-key": apiKey
+          "Content-Type": "application/json"
         }
       });
 
