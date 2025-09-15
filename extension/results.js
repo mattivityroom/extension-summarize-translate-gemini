@@ -7,7 +7,8 @@ import {
   getModelId,
   getThinkingBudget,
   generateContent,
-  streamGenerateContent
+  streamGenerateContent,
+  isFreshdeskUrl
 } from "./utils.js";
 
 const conversation = [];
@@ -187,6 +188,15 @@ const initialize = async () => {
   document.querySelectorAll("[data-i18n]").forEach(element => {
     element.textContent = chrome.i18n.getMessage(element.getAttribute("data-i18n"));
   });
+
+  // Check if current tab URL contains "freshdesk" and disable input if not
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!isFreshdeskUrl(tab.url)) {
+    document.getElementById("text").disabled = true;
+    document.getElementById("text").placeholder = chrome.i18n.getMessage("popup_freshdesk_only");
+    document.getElementById("send").disabled = true;
+    document.getElementById("languageModel").disabled = true;
+  }
 
   // Restore the language model from the local storage
   const { languageModel } = await chrome.storage.local.get({ languageModel: "2.5-flash:0" });

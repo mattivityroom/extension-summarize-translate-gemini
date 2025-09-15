@@ -5,7 +5,8 @@ import {
   applyFontSize,
   loadTemplate,
   displayLoadingMessage,
-  convertMarkdownToHtml
+  convertMarkdownToHtml,
+  isFreshdeskUrl
 } from "./utils.js";
 
 let resultIndex = 0;
@@ -304,6 +305,14 @@ const main = async (useCache) => {
   await chrome.storage.session.set({ resultIndex: resultIndex });
 
   try {
+    // Check if current tab URL contains "freshdesk"
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!isFreshdeskUrl(tab.url)) {
+      content = chrome.i18n.getMessage("popup_freshdesk_only");
+      document.getElementById("content").innerHTML = convertMarkdownToHtml(content, false);
+      return;
+    }
+
     const { apiKey, streaming } = await chrome.storage.local.get({ apiKey: "", streaming: false });
     const languageModel = document.getElementById("languageModel").value;
     const languageCode = document.getElementById("languageCode").value;

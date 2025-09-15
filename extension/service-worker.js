@@ -3,7 +3,8 @@ import {
   getThinkingBudget,
   generateContent,
   streamGenerateContent,
-  createContextMenus
+  createContextMenus,
+  isFreshdeskUrl
 } from "./utils.js";
 
 const getSystemPrompt = async (actionType, mediaType, languageCode, taskInputLength) => {
@@ -283,6 +284,13 @@ if (chrome.commands) {
       const currentWindow = await chrome.windows.getCurrent({});
 
       if (currentWindow.focused) {
+        // Check if current tab URL contains "freshdesk"
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (!isFreshdeskUrl(tab.url)) {
+          console.log("Extension only works on Freshdesk pages");
+          return;
+        }
+
         try {
           await chrome.storage.session.set({ triggerAction: command });
           await chrome.action.openPopup();
@@ -300,6 +308,13 @@ if (chrome.commands) {
 if (chrome.contextMenus) {
   chrome.contextMenus.onClicked.addListener((info) => {
     (async () => {
+      // Check if current tab URL contains "freshdesk"
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (!isFreshdeskUrl(tab.url)) {
+        console.log("Extension only works on Freshdesk pages");
+        return;
+      }
+
       try {
         await chrome.storage.session.set({ triggerAction: info.menuItemId });
         await chrome.action.openPopup();

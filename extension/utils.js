@@ -253,6 +253,10 @@ export const streamGenerateContent = async (apiKey, modelId, apiContents, apiCon
   }
 };
 
+export const isFreshdeskUrl = (url) => {
+  return url && url.toLowerCase().includes("freshdesk");
+};
+
 export const createContextMenus = async (useContextMenus, label1, label2, label3) => {
   if (!chrome.contextMenus) {
     // Firefox for Android does not support chrome.contextMenus

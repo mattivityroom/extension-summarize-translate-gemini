@@ -220,5 +220,8 @@
     },
     "context_custom_action_3": {
         "message": "Custom action 3"
+    },
+    "popup_freshdesk_only": {
+        "message": "This extension only works on Freshdesk pages. Please navigate to a Freshdesk URL to use this extension."
     }
 }
