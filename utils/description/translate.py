@@ -2,29 +2,21 @@ import os
 import time
 from google import genai
 from google.genai.types import Content, GenerateContentConfig, Part
-
+from dotenv import load_dotenv
 
 def main():
+    load_dotenv()
+
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
     languageList = {
-        "de": "German",
-        "es": "Spanish",
-        "fr": "French",
-        "it": "Italian",
-        "pt_BR": "Brazilian Portuguese",
-        "vi": "Vietnamese",
-        "ru": "Russian",
-        "ar": "Arabic",
-        "hi": "Hindi",
-        "bn": "Bengali",
-        "zh_CN": "Simplified Chinese",
-        "zh_TW": "Traditional Chinese",
-        "ja": "Japanese",
-        "ko": "Korean"
+        "de": "German"
     }
 
-    client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", ""))
+    client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", ""), vertexai=True)
 
-    with open("description_en.txt", 'r') as f:
+    with open(os.path.join(script_dir, "description_en.txt"), 'r') as f:
         description = f.read()
 
     for languageCode, languageName in languageList.items():
@@ -55,9 +47,10 @@ def main():
             )
 
             if response.text:
-                os.makedirs("output", exist_ok=True)
+                output_dir = os.path.join(script_dir, "output")
+                os.makedirs(output_dir, exist_ok=True)
 
-                with open(f"output/description_{languageCode}.txt", 'w') as f:
+                with open(os.path.join(output_dir, f"description_{languageCode}.txt"), 'w') as f:
                     f.write(response.text)
             else:
                 print("No text returned in response.")
