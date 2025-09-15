@@ -53,6 +53,19 @@ Follow-up questions can be asked on the results page.
 
 ![Results](img/screenshot_results.png)
 
+## Distribution
+
+To create distributable packages for Chrome Web Store, Firefox Add-ons, or source distribution:
+
+```bash
+node package-extension.js
+```
+
+This will generate the following packages in the `dist/` directory:
+- `summarize-translate-gemini-chrome-v{version}.zip` - Chrome Web Store package
+- `summarize-translate-gemini-firefox-v{version}.zip` - Firefox Add-ons package
+- `summarize-translate-gemini-source-v{version}.zip` - Source code package
+
 ## License
 
 MIT License

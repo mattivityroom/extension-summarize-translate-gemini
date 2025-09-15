@@ -4,3 +4,4 @@ utils/description/output/
 utils/messages/.venv/
 utils/messages/output/
 .env
+dist/*
