@@ -23,7 +23,8 @@ const getSystemPrompt = async (actionType, mediaType, languageCode, taskInputLen
     zh_cn: "Simplified Chinese",
     zh_tw: "Traditional Chinese",
     ja: "Japanese",
-    ko: "Korean"
+    ko: "Korean",
+    id: "Indonesian"
   };
 
   // Set the user-specified language
@@ -194,7 +195,7 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
     if (request.message === "chunk") {
       // Split the task input
       const { actionType, taskInput, languageModel } = request;
-      const { apiKey, userModelId } = await chrome.storage.local.get({ apiKey: "", userModelId: "gemini-2.0-flash-001" });
+      const { apiKey, userModelId } = await chrome.storage.local.get({ apiKey: "", userModelId: "" });
       const modelId = getModelId(languageModel, userModelId);
       const chunkSize = await getCharacterLimit(apiKey, modelId, actionType);
       const taskInputChunks = chunkText(taskInput, chunkSize);
@@ -202,7 +203,7 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
     } else if (request.message === "generate") {
       // Generate content
       const { actionType, mediaType, taskInput, languageModel, languageCode } = request;
-      const { apiKey, streaming, userModelId } = await chrome.storage.local.get({ apiKey: "", streaming: false, userModelId: "gemini-2.0-flash-001" });
+      const { apiKey, streaming, userModelId } = await chrome.storage.local.get({ apiKey: "", streaming: false, userModelId: "" });
       const modelId = getModelId(languageModel, userModelId);
       const thinkingBudget = getThinkingBudget(languageModel, userModelId);
 

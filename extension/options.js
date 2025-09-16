@@ -7,10 +7,10 @@ import {
 
 const INITIAL_OPTIONS = {
   apiKey: "",
-  languageModel: "2.5-flash:0",
-  userModelId: "gemini-2.0-flash-001",
-  languageCode: "en",
-  userLanguage: "Turkish",
+  languageModel: "2.0-flash",
+  userModelId: "",
+  languageCode: "id",
+  userLanguage: "Indonesian",
   noTextAction: "summarize",
   noTextCustomPrompt1: "",
   noTextCustomPrompt2: "",
@@ -96,7 +96,7 @@ const setOptionsToForm = async () => {
 
   // Set the default language model if the language model is not set
   if (!document.getElementById("languageModel").value) {
-    document.getElementById("languageModel").value = "2.5-flash:0";
+    document.getElementById("languageModel").value = "2.0-flash";
   }
 };
 
@@ -203,7 +203,7 @@ const applyOptionsToForm = (options) => {
 
   // Set the default language model if the language model is not set
   if (!document.getElementById("languageModel").value) {
-    document.getElementById("languageModel").value = "2.5-flash:0";
+    document.getElementById("languageModel").value = "2.0-flash";
   }
 };
 

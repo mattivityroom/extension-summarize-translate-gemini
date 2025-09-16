@@ -1,0 +1,227 @@
+{
+    "extension_name": {
+        "message": "Ceria Summarize"
+    },
+    "extension_description": {
+        "message": "Meringkas dan menerjemahkan halaman web. Menggunakan Gemini sebagai backend."
+    },
+    "popup_button_copy": {
+        "message": "Salin"
+    },
+    "popup_copied": {
+        "message": "Disalin."
+    },
+    "popup_button_run": {
+        "message": "Jalankan lagi"
+    },
+    "popup_button_results": {
+        "message": "Buka hasil di tab baru"
+    },
+    "popup_button_options": {
+        "message": "Buka halaman opsi"
+    },
+    "popup_retrieving_captions": {
+        "message": "Mencoba mengambil subtitle"
+    },
+    "popup_summarizing": {
+        "message": "Meringkas"
+    },
+    "popup_summarizing_captions": {
+        "message": "Meringkas subtitle"
+    },
+    "popup_summarizing_image": {
+        "message": "Meringkas gambar"
+    },
+    "popup_translating": {
+        "message": "Menerjemahkan"
+    },
+    "popup_translating_captions": {
+        "message": "Menerjemahkan subtitle"
+    },
+    "popup_translating_image": {
+        "message": "Menerjemahkan gambar"
+    },
+    "popup_processing": {
+        "message": "Memproses"
+    },
+    "popup_prompt_blocked": {
+        "message": "Prompt diblokir."
+    },
+    "popup_response_blocked": {
+        "message": "Respons diblokir."
+    },
+    "popup_unexpected_response": {
+        "message": "Terjadi kesalahan tak terduga. Silakan periksa konsol untuk detail."
+    },
+    "popup_no_apikey": {
+        "message": "Silakan atur kunci API Gemini Anda di halaman opsi."
+    },
+    "popup_miscellaneous_error": {
+        "message": "Tidak dapat meringkas atau menerjemahkan halaman ini."
+    },
+    "results_title": {
+        "message": "Hasil - Meringkas dan Menerjemahkan dengan Gemini"
+    },
+    "results_button_clear": {
+        "message": "Hapus percakapan"
+    },
+    "results_button_copy": {
+        "message": "Salin"
+    },
+    "results_copied": {
+        "message": "Disalin."
+    },
+    "results_button_send": {
+        "message": "Kirim"
+    },
+    "results_waiting_response": {
+        "message": "Menunggu respons"
+    },
+    "results_prompt_blocked": {
+        "message": "Prompt diblokir."
+    },
+    "results_response_blocked": {
+        "message": "Respons diblokir."
+    },
+    "results_unexpected_response": {
+        "message": "Terjadi kesalahan tak terduga. Silakan periksa konsol untuk detail."
+    },
+    "options_title": {
+        "message": "Opsi - Meringkas dan Menerjemahkan dengan Gemini"
+    },
+    "options_apikey": {
+        "message": "Kunci API Gemini"
+    },
+    "options_apikey_hint": {
+        "message": "Anda dapat memperoleh kunci API Gemini dari halaman berikut."
+    },
+    "options_model": {
+        "message": "Model bahasa"
+    },
+    "options_model_user": {
+        "message": "Model yang ditentukan pengguna"
+    },
+    "options_language": {
+        "message": "Bahasa untuk Ringkasan dan Terjemahan"
+    },
+    "options_language_user": {
+        "message": "Bahasa yang ditentukan pengguna"
+    },
+    "options_language_notes": {
+        "message": "Catatan: Pengaturan bahasa ini tidak mempengaruhi tindakan kustom."
+    },
+    "options_no_text_action": {
+        "message": "Ketika tidak ada teks yang dipilih, lakukan tindakan berikut"
+    },
+    "options_no_text_summarize": {
+        "message": "Ringkas (default)"
+    },
+    "options_no_text_translate": {
+        "message": "Terjemahkan"
+    },
+    "options_no_text_custom_1": {
+        "message": "Tindakan kustom 1"
+    },
+    "options_no_text_custom_2": {
+        "message": "Tindakan kustom 2"
+    },
+    "options_no_text_custom_3": {
+        "message": "Tindakan kustom 3"
+    },
+    "options_no_text_custom_notes": {
+        "message": "Tindakan kustom juga dapat diakses melalui menu konteks (desktop saja)."
+    },
+    "options_text_action": {
+        "message": "Ketika teks dipilih, lakukan tindakan berikut"
+    },
+    "options_text_summarize": {
+        "message": "Ringkas"
+    },
+    "options_text_translate": {
+        "message": "Terjemahkan (default)"
+    },
+    "options_text_custom_1": {
+        "message": "Tindakan kustom 1"
+    },
+    "options_text_custom_2": {
+        "message": "Tindakan kustom 2"
+    },
+    "options_text_custom_3": {
+        "message": "Tindakan kustom 3"
+    },
+    "options_text_custom_notes": {
+        "message": "Tindakan kustom juga dapat diakses melalui menu konteks (desktop saja)."
+    },
+    "options_contextmenus": {
+        "message": "Tambahkan ke menu konteks"
+    },
+    "options_contextmenu_label_1": {
+        "message": "Label untuk tindakan kustom 1 (opsional)"
+    },
+    "options_contextmenu_label_2": {
+        "message": "Label untuk tindakan kustom 2 (opsional)"
+    },
+    "options_contextmenu_label_3": {
+        "message": "Label untuk tindakan kustom 3 (opsional)"
+    },
+    "options_streaming": {
+        "message": "Aktifkan output streaming dari model bahasa"
+    },
+    "options_theme": {
+        "message": "Tema"
+    },
+    "options_font_size": {
+        "message": "Ukuran font"
+    },
+    "options_button_save": {
+        "message": "Simpan opsi"
+    },
+    "options_saved": {
+        "message": "Disimpan."
+    },
+    "options_export": {
+        "message": "Ekspor opsi ke file"
+    },
+    "options_export_api_key": {
+        "message": "Sertakan kunci API"
+    },
+    "options_import": {
+        "message": "Impor opsi dari file"
+    },
+    "options_import_succeeded": {
+        "message": "Impor berhasil."
+    },
+    "options_import_failed": {
+        "message": "Impor gagal."
+    },
+    "options_sync_cloud": {
+        "message": "Sinkronkan opsi ke cloud"
+    },
+    "options_sync_cloud_started": {
+        "message": "Sinkronisasi dimulai."
+    },
+    "options_sync_cloud_failed": {
+        "message": "Sinkronisasi gagal."
+    },
+    "options_restore_cloud": {
+        "message": "Pulihkan opsi dari cloud"
+    },
+    "options_restore_cloud_succeeded": {
+        "message": "Pemulihan berhasil."
+    },
+    "context_standard_action": {
+        "message": "Tindakan standar"
+    },
+    "context_custom_action_1": {
+        "message": "Tindakan kustom 1"
+    },
+    "context_custom_action_2": {
+        "message": "Tindakan kustom 2"
+    },
+    "context_custom_action_3": {
+        "message": "Tindakan kustom 3"
+    },
+    "popup_freshdesk_only": {
+        "message": "Ekstensi ini hanya berfungsi di halaman Freshdesk. Silakan navigasi ke URL Freshdesk untuk menggunakan ekstensi ini."
+    }
+}
