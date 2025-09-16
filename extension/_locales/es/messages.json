@@ -167,6 +167,12 @@
     "options_streaming": {
         "message": "Habilitar salida de streaming del modelo de lenguaje"
     },
+    "options_experimental_features": {
+        "message": "Habilitar funciones experimentales"
+    },
+    "options_experimental_features_hint": {
+        "message": "Las funciones experimentales pueden ser inestables y están sujetas a cambios."
+    },
     "options_theme": {
         "message": "Tema"
     },

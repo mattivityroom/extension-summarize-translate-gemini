@@ -1,6 +1,6 @@
 {
     "extension_name": {
-        "message": "Ceria Summarize"
+        "message": "CeRIA extention"
     },
     "extension_description": {
         "message": "Summarize and translate web pages. Uses Gemini as the backend."
@@ -18,7 +18,7 @@
         "message": "Open results in a new tab"
     },
     "popup_button_options": {
-        "message": "Open options page"
+        "message": "Open Configuration page"
     },
     "popup_retrieving_captions": {
         "message": "Attempting to retrieve captions"
@@ -87,13 +87,13 @@
         "message": "An unexpected error occurred. Please check the console for details."
     },
     "options_title": {
-        "message": "Options - Summarize and Translate with Gemini"
+        "message": "Options - Ceria Configuration"
     },
     "options_apikey": {
         "message": "Gemini API key"
     },
     "options_apikey_hint": {
-        "message": "You can obtain a Gemini API key from the following page."
+        "message": "You can obtain a Google Vertex AI at the following page."
     },
     "options_model": {
         "message": "Language model"
@@ -167,6 +167,12 @@
     "options_streaming": {
         "message": "Enable streaming output from the language model"
     },
+    "options_experimental_features": {
+        "message": "Enable experimental features"
+    },
+    "options_experimental_features_hint": {
+        "message": "Experimental features may be unstable and are subject to change."
+    },
     "options_theme": {
         "message": "Theme"
     },
@@ -174,7 +180,7 @@
         "message": "Font size"
     },
     "options_button_save": {
-        "message": "Save options"
+        "message": "Save Configuration"
     },
     "options_saved": {
         "message": "Saved."

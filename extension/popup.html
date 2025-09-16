@@ -15,6 +15,11 @@
         display: block;
       }
     }
+
+    /* Hide experimental features when disabled */
+    body.experimental-disabled .experimental-feature {
+      display: none !important;
+    }
   </style>
 </head>
 
@@ -37,14 +42,14 @@
   </div>
 
   <div>
-    <span id="languageModelContainer"></span>
-    <span id="languageCodeContainer"></span>
+    <span id="languageModelContainer" class="experimental-feature"></span>
+    <span id="languageCodeContainer" class="experimental-feature"></span>
     <input id="triggerAction" type="hidden" value="">
     <button id="run" data-i18n="popup_button_run">Run it again</button>
   </div>
 
   <div>
-    <button id="results" data-i18n="popup_button_results">Open results in a new tab</button>
+    <button id="results" class="experimental-feature" data-i18n="popup_button_results">Open results in a new tab</button>
     <button id="options" data-i18n="popup_button_options">Open options page</button>
   </div>
 

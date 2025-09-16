@@ -24,6 +24,7 @@ const INITIAL_OPTIONS = {
   contextMenuLabel2: "",
   contextMenuLabel3: "",
   streaming: false,
+  experimentalFeatures: false,
   theme: "system",
   fontSize: "medium"
 };
@@ -59,6 +60,7 @@ const getOptionsFromForm = (includeApiKey) => {
     contextMenuLabel2: document.getElementById("contextMenuLabel2").value,
     contextMenuLabel3: document.getElementById("contextMenuLabel3").value,
     streaming: document.getElementById("streaming").checked,
+    experimentalFeatures: document.getElementById("experimentalFeatures").checked,
     theme: document.getElementById("theme").value,
     fontSize: document.getElementById("fontSize").value
   };
@@ -91,6 +93,7 @@ const setOptionsToForm = async () => {
   document.getElementById("contextMenuLabel2").value = options.contextMenuLabel2;
   document.getElementById("contextMenuLabel3").value = options.contextMenuLabel3;
   document.getElementById("streaming").checked = options.streaming;
+  document.getElementById("experimentalFeatures").checked = options.experimentalFeatures;
   document.getElementById("theme").value = options.theme;
   document.getElementById("fontSize").value = options.fontSize;
 
@@ -193,6 +196,10 @@ const applyOptionsToForm = (options) => {
     document.getElementById("streaming").checked = options.streaming;
   }
 
+  if (options.experimentalFeatures !== undefined) {
+    document.getElementById("experimentalFeatures").checked = options.experimentalFeatures;
+  }
+
   if (options.theme) {
     document.getElementById("theme").value = options.theme;
   }
@@ -287,12 +294,24 @@ const restoreOptionsFromCloud = async () => {
   showStatusMessage(chrome.i18n.getMessage("options_restore_cloud_succeeded"), 1000);
 };
 
+const applyExperimentalFeatures = (experimentalFeatures) => {
+  if (!experimentalFeatures) {
+    document.body.classList.add("experimental-disabled");
+  } else {
+    document.body.classList.remove("experimental-disabled");
+  }
+};
+
 const initialize = async () => {
   // Apply the theme
   applyTheme((await chrome.storage.local.get({ theme: "system" })).theme);
 
   // Apply font size
   applyFontSize((await chrome.storage.local.get({ fontSize: "medium" })).fontSize);
+
+  // Apply experimental features setting
+  const { experimentalFeatures } = await chrome.storage.local.get({ experimentalFeatures: false });
+  applyExperimentalFeatures(experimentalFeatures);
 
   // Load the language model template
   const languageModelTemplate = await loadTemplate("languageModelTemplate");
@@ -311,6 +330,11 @@ const initialize = async () => {
   });
 
   setOptionsToForm();
+
+  // Add event listener for experimental features checkbox to toggle visibility in real-time
+  document.getElementById("experimentalFeatures").addEventListener("change", (event) => {
+    applyExperimentalFeatures(event.target.checked);
+  });
 };
 
 document.addEventListener("DOMContentLoaded", initialize);

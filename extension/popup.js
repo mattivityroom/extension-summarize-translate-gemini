@@ -461,6 +461,14 @@ const initialize = async () => {
   // Apply font size
   applyFontSize((await chrome.storage.local.get({ fontSize: "medium" })).fontSize);
 
+  // Apply experimental features setting
+  const { experimentalFeatures } = await chrome.storage.local.get({ experimentalFeatures: false });
+  if (!experimentalFeatures) {
+    document.body.classList.add("experimental-disabled");
+  } else {
+    document.body.classList.remove("experimental-disabled");
+  }
+
   // Load the language model template
   const languageModelTemplate = await loadTemplate("languageModelTemplate");
   document.getElementById("languageModelContainer").appendChild(languageModelTemplate);
