@@ -5,7 +5,7 @@
   "description": "__MSG_extension_description__",
   "default_locale": "en",
   "icons": {
-    "128": "img/icon-128.png"
+    "128": "img/ceria-128.png"
   },
   "author": "sh2@pop01.odn.ne.jp",
   "action": {
