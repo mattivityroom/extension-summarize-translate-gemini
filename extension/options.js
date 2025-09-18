@@ -7,7 +7,7 @@ import {
 
 const INITIAL_OPTIONS = {
   apiKey: "",
-  languageModel: "2.0-flash",
+  languageModel: "2.5-flash:0",
   userModelId: "",
   languageCode: "id",
   userLanguage: "Indonesian",
@@ -99,7 +99,7 @@ const setOptionsToForm = async () => {
 
   // Set the default language model if the language model is not set
   if (!document.getElementById("languageModel").value) {
-    document.getElementById("languageModel").value = "2.0-flash";
+    document.getElementById("languageModel").value = "2.5-flash:0";
   }
 };
 
@@ -210,7 +210,7 @@ const applyOptionsToForm = (options) => {
 
   // Set the default language model if the language model is not set
   if (!document.getElementById("languageModel").value) {
-    document.getElementById("languageModel").value = "2.0-flash";
+    document.getElementById("languageModel").value = "2.5-flash:0";
   }
 };
 

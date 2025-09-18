@@ -1,6 +1,6 @@
 {
     "extension_name": {
-        "message": "CeRIA extention"
+        "message": "CeRIA extensions"
     },
     "extension_description": {
         "message": "Summarize and translate web pages. Uses Gemini as the backend."

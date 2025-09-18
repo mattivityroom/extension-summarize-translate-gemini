@@ -30,7 +30,6 @@ const getSystemPrompt = async (actionType, mediaType, languageCode, taskInputLen
   // Set the user-specified language
   languageNames["zz"] = (await chrome.storage.local.get({ userLanguage: "Turkish" })).userLanguage;
 
-  const numItems = Math.min(10, 3 + Math.floor(taskInputLength / 2000));
   let systemPrompt = "";
 
   if (actionType === "summarize") {
@@ -39,9 +38,15 @@ const getSystemPrompt = async (actionType, mediaType, languageCode, taskInputLen
         `in ${languageNames[languageCode]} and reply only with the list.\n` +
         "Format:\n1. First point.\n2. Second point.\n3. Third point.";
     } else {
-      systemPrompt = `Summarize the entire text as up to ${numItems}-item Markdown numbered list ` +
-        `in ${languageNames[languageCode]} and reply only with the list.\n` +
-        "Format:\n1. First point.\n2. Second point.\n3. Third point.";
+      systemPrompt = "Bantu agen C&R untuk membuat ringkasan dari tikcet issue yang masuk. Format seperti berikut:\n\n" +
+        "Percakapan terakhir:\n" +
+        "- Pesan terakhir yang pelanggan katakan\n" +
+        "- Status terakhir issue yang sedang berjalan di tangani oleh Agen\n\n" +
+        "Ringkasan percakapan:\n" +
+        "1. Pelanggan melaporkan...\n" +
+        "2. Agen C&R meresponse...\n" +
+        "...\n\n" +
+        "PENTING: Langsung berikan ringkasan tanpa kata pembuka seperti 'Tentu, berikut adalah ringkasan...' atau sejenisnya. Mulai langsung dengan 'Percakapan sedang berlangsung:'.";
     }
   } else if (actionType === "translate") {
     if (mediaType === "image") {
@@ -90,9 +95,9 @@ const getCharacterLimit = async (apiKey, modelId, actionType) => {
       textCustom: 786432
     },
     "gemini-2.5-flash": {
-      summarize: 786432,
+      summarize: 4194304,
       translate: 65536,
-      noTextCustom: 786432,
+      noTextCustom: 4194304,
       textCustom: 786432
     },
     "gemini-2.5-flash-lite": {

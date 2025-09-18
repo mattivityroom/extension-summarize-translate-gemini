@@ -30,15 +30,49 @@ const getSelectedText = () => {
 };
 
 const getWholeText = () => {
-  // Return the whole text
-  const documentClone = document.cloneNode(true);
-  const article = new Readability(documentClone).parse();
+  // First, try to find elements with class "ticket-details-wrapper"
+  const ticketDetailsElements = document.querySelectorAll(".ticket-details-wrapper");
 
-  if (article) {
-    return article.textContent;
+  if (ticketDetailsElements.length > 0) {
+    // If ticket-details-wrapper elements exist, extract text only from them
+    console.log("Found ticket-details-wrapper elements, extracting text from them only.");
+
+    // Create a new document containing only the ticket-details-wrapper elements
+    const tempDoc = document.implementation.createHTMLDocument("temp");
+    const tempBody = tempDoc.body;
+
+    // Clone each ticket-details-wrapper element and add to temp document
+    ticketDetailsElements.forEach(element => {
+      const clonedElement = element.cloneNode(true);
+      tempBody.appendChild(clonedElement);
+    });
+
+    // Use Readability on the filtered content
+    const article = new Readability(tempDoc).parse();
+
+    if (article) {
+      return article.textContent;
+    } else {
+      // If Readability fails, fall back to innerText of the ticket-details-wrapper elements
+      console.log("Readability failed on ticket-details-wrapper content. Using innerText instead.");
+      let combinedText = "";
+      ticketDetailsElements.forEach(element => {
+        combinedText += element.innerText + "\n";
+      });
+      return combinedText.trim();
+    }
   } else {
-    console.log("Failed to parse the article. Using document.body.innerText instead.");
-    return document.body.innerText;
+    // Fall back to current behavior if no ticket-details-wrapper elements exist
+    console.log("No ticket-details-wrapper elements found. Using current behavior (whole page).");
+    const documentClone = document.cloneNode(true);
+    const article = new Readability(documentClone).parse();
+
+    if (article) {
+      return article.textContent;
+    } else {
+      console.log("Failed to parse the article. Using document.body.innerText instead.");
+      return document.body.innerText;
+    }
   }
 };
 
